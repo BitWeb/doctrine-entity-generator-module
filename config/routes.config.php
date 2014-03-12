@@ -10,4 +10,5 @@ return array (
 				'action' => 'index', 
 			)
 		)
+	)
 );
