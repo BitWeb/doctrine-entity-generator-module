@@ -15,10 +15,9 @@ var EntityGeneratorManager = {
 	}		
 }
 
-
 </script>
 <h1>Entity generaator</h1>
-<form action="<?php echo $this->url('development', array('controller'=>'entity', 'action'=>'generate-entities')); ?>" method="post">
+<form action="<?php echo $this->url('development', array('controller'=>'entity', 'action'=>'generate')); ?>" method="post">
 	<table class="table">
 		<tr>
 			<th colspan="2">Seaded</th>
@@ -46,8 +45,8 @@ var EntityGeneratorManager = {
 			</td>
 		</tr>
 		<tr>
-			<th>Nimi</th>
-			<th>Kas olemas</th>
+			<th>Name</th>
+			<th>Exists</th>
 			<th>
 				<div style="width:100px;text-align:right;">
 					<input class="btn btn-info" type="button" onclick="EntityGeneratorManager.checkAllEntities()" id="checkAllButton" value="Kõik!">

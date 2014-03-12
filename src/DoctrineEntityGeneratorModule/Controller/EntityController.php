@@ -1,5 +1,4 @@
 <?php
-
 namespace DoctrineEntityGeneratorModule\Controller;
 
 use Zend\View\Model\ViewModel;
@@ -8,20 +7,11 @@ use Zend\Mvc\Controller\AbstractActionController;
 use DoctrineEntityGeneratorModule\Service\EntityGeneratorService;
 
 class EntityController extends AbstractActionController {
-
-	/**
-	 * @var DoctrineEntityGeneratorModule\Service\EntityService
-	 */
-	protected $entityService;
 	
 	/**
 	 * @var \DoctrineEntityGeneratorModule\Service\EntityGeneratorService
 	 */
 	protected $entityGeneratorService;
-	
-	public function setEntityService(EntityService $entityService) {
-		$this->entityService = $entityService;
-	}
 	
 	public function setEntityGeneratorService(EntityGeneratorService $entityGeneratorService) {
 		$this->entityGeneratorService = $entityGeneratorService;
@@ -35,14 +25,10 @@ class EntityController extends AbstractActionController {
 		return $view;
 	}
 	
-	public function generateEntitiesAction(){
+	public function generateAction(){
 		$view = new ViewModel();
-		
-		if($this->request->isPost()){
-// 			$outputList = $this->entityService->generateEntities($this->request->getPost());
-// 			$view->setVariable('outputList', $outputList);
-			//$this->entityGeneratorService->init($this->request->getPost());
-			
+		$view->setTemplate('entity/generate');
+		if($this->request->isPost()){			
 			$options = array(
 				'moduleName' => 'Application',
 				'entityNamespace' => 'Entity',

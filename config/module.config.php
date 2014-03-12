@@ -3,21 +3,10 @@ use Zend\ServiceManager\ServiceManager;
 
 use Zend\Mvc\Controller\ControllerManager;
 
-$entityGeneratorConfiguration = array (
-	'generatedEntitiesPath' => array ( //Change this path to generate entities to correct directory
-		'path' => realpath(dirname($_SERVER['SCRIPT_FILENAME'])) . '/../data/DoctrineEntityGeneratorModule/GeneratedEntities/', 
-		'namespace' => 'Entity'
-	)
-);
-
-$roleManagementConfiguration = array (
-	'generatedConfigurationRelativePath' => realpath(dirname($_SERVER['SCRIPT_FILENAME'])) . '/../data/Development/ACL/',	
-);
-
 return array (
 	'generatedEntitiesPath' => array ( //Change this path to generate entities to correct directory
-			'path' => realpath(dirname($_SERVER['SCRIPT_FILENAME'])) . '/../data/DoctrineEntityGeneratorModule/GeneratedEntities/',
-			'namespace' => 'Entity'
+		'path' => realpath(dirname($_SERVER['SCRIPT_FILENAME'])) . '/../data/DoctrineEntityGeneratorModule/GeneratedEntities/',
+		'namespace' => 'Entity'
 	),
 	'router' => array (
 		'routes' => include 'routes.config.php',
@@ -30,23 +19,8 @@ return array (
 			'DoctrineEntityGeneratorModule\Controller\Entity' => function (ControllerManager $cm) {
 				$sm = $cm->getServiceLocator();
 				$controller = new DoctrineEntityGeneratorModule\Controller\EntityController();
-				$controller->setEntityService($sm->get('DoctrineEntityGeneratorModule\Service\Entity'));
 				$controller->setEntityGeneratorService($sm->get('DoctrineEntityGeneratorModule\Service\EntityGenerator'));
 				
-				return $controller;
-			},
-			'DoctrineEntityGeneratorModule\Controller\Role' => function (ControllerManager $cm) {
-				$sm = $cm->getServiceLocator();
-				$controller = new DoctrineEntityGeneratorModule\Controller\RoleController();
-				$controller->setRoleService($sm->get('DoctrineEntityGeneratorModule\Service\Role'));
-			
-				return $controller;
-			},
-			'DoctrineEntityGeneratorModule\Controller\RoleGroups' => function (ControllerManager $cm) {
-				$sm = $cm->getServiceLocator();
-				$controller = new DoctrineEntityGeneratorModule\Controller\RoleGroupsController();
-				$controller->setRoleGroupsService($sm->get('DoctrineEntityGeneratorModule\Service\RoleGroups'));
-					
 				return $controller;
 			}
 		)
@@ -72,29 +46,12 @@ return array (
 			
 		),
 		'factories' => array (
-			'DoctrineEntityGeneratorModule\Service\Entity' => function(ServiceManager $sm) use ($entityGeneratorConfiguration) {
-				$service = new DoctrineEntityGeneratorModule\Service\EntityService();
-				$service->setConfiguration($entityGeneratorConfiguration);
-				
-				return $service;
-			},
-			'DoctrineEntityGeneratorModule\Service\Role' => function(ServiceManager $sm) use ($roleManagementConfiguration) {
-				$service = new DoctrineEntityGeneratorModule\Service\RoleService();
-				$service->setConfiguration($roleManagementConfiguration);
-				
-				return $service;
-			},
-			'DoctrineEntityGeneratorModule\Service\RoleGroups' => function(ServiceManager $sm) use ($roleManagementConfiguration) {
-				$service = new DoctrineEntityGeneratorModule\Service\RoleGroupsService();
-			
-				return $service;
-			},
 			'DoctrineEntityGeneratorModule\Service\EntityGenerator' => function(ServiceManager $sm) use ($entityGeneratorConfiguration) {
 				$service = new DoctrineEntityGeneratorModule\Service\EntityGeneratorService();
 			
 				return $service;
 			},
-			'developmentNavigation' => 'DoctrineEntityGeneratorModule\Navigation\DevelopmentNavigationFactory'
+			'entityGeneratorNavigation' => 'DoctrineEntityGeneratorModule\Navigation\EntityGeneratorNavigationFactory'
 		)
 	), 
 	'navigation' => array (

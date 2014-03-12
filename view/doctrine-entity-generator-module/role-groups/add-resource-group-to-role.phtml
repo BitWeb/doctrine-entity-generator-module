@@ -1,9 +1,0 @@
-<?php $role = $this->role; /* @var $role \BitWebAcl\Entity\BW\Role */ ?>
-<form action="" method="post">
-	<p>Muudad rolli <b><?php echo $role->getIdentificator(); ?></b> ressursigruppe</p>
-	<?php foreach ($this->resourceGroups as $resourceGroup): /* @var $resourceGroup \BitWebAcl\Entity\Bw\ResourceGroup */ ?>
-		<label><input type="checkbox" name="resourceGroups[]" <?php if ($role->getResourceGroups()->contains($resourceGroup)): ?>checked="checked"<?php endif; ?> value="<?php echo $resourceGroup->getIdentificator(); ?>"><?php echo $resourceGroup->getIdentificator(); ?></label> 
-	<?php endforeach; ?>
-	<input class="btn btn-primary" type="submit" value="Salvesta">
-	<input class="btn btn-danger" type="button" value="Tagasi" onclick="javascript:back('tabRoles');">
-</form>

@@ -23,11 +23,6 @@ abstract class AbstractService implements ObjectManagerAwareInterface, ServiceLo
 	protected $locator;
 	
 	/**
-	 * @var \Zend\Log\LoggerInterface
-	 */
-	protected $logger;
-	
-	/**
 	 * @var \Zend\Config\Config
 	 */
 	protected $config;
@@ -55,25 +50,4 @@ abstract class AbstractService implements ObjectManagerAwareInterface, ServiceLo
 		return $this->locator;
 	}
 	
-	public function setLogger(LoggerInterface $logger) {
-		$this->logger = $logger;
-	}
-	
-	/**
-	 * @return \Zend\Log\LoggerInterface
-	 */
-	public function getLogger() {
-		return $this->logger;
-	}
-	
-	/**
-	 * @return \Zend\Config\Config
-	 */
-	public function getConfig() {
-		if ($this->config == null) {
-			$this->config = new Config($this->locator->get('Config'));
-		}
-	
-		return $this->config;
-	}
 }

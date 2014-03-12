@@ -176,8 +176,6 @@ class EntityGeneratorService extends AbstractService {
 		$outputList = array();
 		$metadatas = array();
 		
-		//var_dump($this->driver->getAllClassNames()); die();
-		
 		foreach($classNames as $className){
 			if(in_array($className, $this->driver->getAllClassNames())){
 				
@@ -277,8 +275,12 @@ class EntityGeneratorService extends AbstractService {
 		$subNamespace = '';
 	
 		foreach($this->classNames as $otherClassName) {
+			// Ignore class if class is suffix
+			$endsWith = strrpos($namespace, $otherClassName) == (strlen($namespace) - strlen($otherClassName));
 			if ($namespace != $otherClassName &&
-			strstr($namespace, $otherClassName) !== false) {
+				$endsWith === false &&
+				strstr($namespace, $otherClassName) !== false) {
+				
 				$similarity = $this->calculateSimilarity($namespace, $otherClassName);
 				if ($similarity > $maxSimilarity) {
 					$maxSimilarity = $similarity;

@@ -16,10 +16,6 @@ class Module implements AutoloaderProviderInterface {
 	public function init(ModuleManager $moduleManager) {
 		$events = StaticEventManager::getInstance();
 		$events->attach(__NAMESPACE__, MvcEvent::EVENT_DISPATCH, array ($this, 'onLoad'), 100);
-		// 		$events->attach('bootstrap', 'bootstrap', array (
-		// 			$this,
-		// 			'initializeServiceLayer'
-		// 		), 99);
 	}
 
 	public function getAutoloaderConfig() {
@@ -32,20 +28,13 @@ class Module implements AutoloaderProviderInterface {
 		);
 	}
 
-	// 	public function initializeServiceLayer($e) {
-	// 		$app = $e->getParam('application');
-	// 		$locator = $app->getLocator();
-	// 	}
-
 	public function getConfig() {
-		//return include __DIR__ . '/config/module.config.php';
 		$configs = array(
-				include __DIR__ . '/../../config/module.config.php',
-				include __DIR__ . '/../../config/routes.config.php',
+			include __DIR__ . '/../../config/module.config.php',
+			include __DIR__ . '/../../config/routes.config.php',
 		);
 		$config = call_user_func_array('array_merge_recursive', $configs);
-		//var_dump(array_merge_recursive($configs[0], $configs[1])); die();
-		//var_dump($config); die();
+		
 		return $config;
 	}
 

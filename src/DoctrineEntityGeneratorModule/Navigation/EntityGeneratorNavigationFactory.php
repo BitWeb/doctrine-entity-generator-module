@@ -3,10 +3,10 @@ namespace DoctrineEntityGeneratorModule\Navigation;
 
 use Zend\Navigation\Service\DefaultNavigationFactory;
 
-class DevelopmentNavigationFactory extends DefaultNavigationFactory {
+class EntityGeneratorNavigationFactory extends DefaultNavigationFactory {
 	
 	public function getName() {
 		
-		return 'development';
+		return 'entityGeneratorNavigation';
 	}
 }
