@@ -1,0 +1,13 @@
+<?php if ($this->areTablesExisting): ?>
+	<p class="text-success">Tabelid on andmebaasis olemas.<br><a href="<?php echo $this->url('development/query', array (
+		'controller' => 'roleGroups',
+		'action' => 'index',
+	));?>" class="btn btn-info"><i class="icon-user icon-arrow-left icon-white"></i> Rolligrupi haldusesse</a></p>
+<?php else: ?>
+	<p class="text-error">Andmebaasis on puudu Rolligruppide tabelid<br><a href="<?php echo $this->url('development/query', array (
+		'controller' => 'roleGroups',
+		'action' => 'generate-database',
+		'generate' => true
+	));?>" class="btn btn-warning"><i class="icon-user icon-hdd icon-white"></i> Genereeri tabelid</a>
+	</p>
+<?php endif; ?>

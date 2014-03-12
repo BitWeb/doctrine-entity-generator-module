@@ -1,5 +1,5 @@
 {
-    "name": "bitweb/bitweb-entitygenerator-module",
+    "name": "bitweb/doctrine-entitygenerator-module",
     "description": "",
     "type": "library",
     "require": {

@@ -5,8 +5,8 @@ return array (
 		'options' => array (
 			'route' => '/dev[/:controller[/:action]]', 
 			'defaults' => array (
-				'__NAMESPACE__' => 'BitwebEntityGeneratorModule\Controller', 
-				'controller' => 'BitwebEntityGeneratorModule\Controller\Entity', 
+				'__NAMESPACE__' => 'DoctrineEntityGeneratorModule\Controller', 
+				'controller' => 'DoctrineEntityGeneratorModule\Controller\Entity', 
 				'action' => 'index', 
 			)
 		), 

@@ -5,7 +5,7 @@ use Zend\Mvc\Controller\ControllerManager;
 
 $entityGeneratorConfiguration = array (
 	'generatedEntitiesPath' => array ( //Change this path to generate entities to correct directory
-		'path' => realpath(dirname($_SERVER['SCRIPT_FILENAME'])) . '/../data/BitwebEntityGeneratorModule/GeneratedEntities/', 
+		'path' => realpath(dirname($_SERVER['SCRIPT_FILENAME'])) . '/../data/DoctrineEntityGeneratorModule/GeneratedEntities/', 
 		'namespace' => 'Entity'
 	)
 );
@@ -16,7 +16,7 @@ $roleManagementConfiguration = array (
 
 return array (
 	'generatedEntitiesPath' => array ( //Change this path to generate entities to correct directory
-			'path' => realpath(dirname($_SERVER['SCRIPT_FILENAME'])) . '/../data/BitwebEntityGeneratorModule/GeneratedEntities/',
+			'path' => realpath(dirname($_SERVER['SCRIPT_FILENAME'])) . '/../data/DoctrineEntityGeneratorModule/GeneratedEntities/',
 			'namespace' => 'Entity'
 	),
 	'router' => array (
@@ -24,28 +24,28 @@ return array (
 	),
 	'controllers' => array (
 		'invokables' => array (
-			'BitwebEntityGeneratorModule\Controller\Index' => 'BitwebEntityGeneratorModule\Controller\IndexController', 
+			'DoctrineEntityGeneratorModule\Controller\Index' => 'DoctrineEntityGeneratorModule\Controller\IndexController', 
 		), 
 		'factories' => array (
-			'BitwebEntityGeneratorModule\Controller\Entity' => function (ControllerManager $cm) {
+			'DoctrineEntityGeneratorModule\Controller\Entity' => function (ControllerManager $cm) {
 				$sm = $cm->getServiceLocator();
-				$controller = new BitwebEntityGeneratorModule\Controller\EntityController();
-				$controller->setEntityService($sm->get('BitwebEntityGeneratorModule\Service\Entity'));
-				$controller->setEntityGeneratorService($sm->get('BitwebEntityGeneratorModule\Service\EntityGenerator'));
+				$controller = new DoctrineEntityGeneratorModule\Controller\EntityController();
+				$controller->setEntityService($sm->get('DoctrineEntityGeneratorModule\Service\Entity'));
+				$controller->setEntityGeneratorService($sm->get('DoctrineEntityGeneratorModule\Service\EntityGenerator'));
 				
 				return $controller;
 			},
-			'BitwebEntityGeneratorModule\Controller\Role' => function (ControllerManager $cm) {
+			'DoctrineEntityGeneratorModule\Controller\Role' => function (ControllerManager $cm) {
 				$sm = $cm->getServiceLocator();
-				$controller = new BitwebEntityGeneratorModule\Controller\RoleController();
-				$controller->setRoleService($sm->get('BitwebEntityGeneratorModule\Service\Role'));
+				$controller = new DoctrineEntityGeneratorModule\Controller\RoleController();
+				$controller->setRoleService($sm->get('DoctrineEntityGeneratorModule\Service\Role'));
 			
 				return $controller;
 			},
-			'BitwebEntityGeneratorModule\Controller\RoleGroups' => function (ControllerManager $cm) {
+			'DoctrineEntityGeneratorModule\Controller\RoleGroups' => function (ControllerManager $cm) {
 				$sm = $cm->getServiceLocator();
-				$controller = new BitwebEntityGeneratorModule\Controller\RoleGroupsController();
-				$controller->setRoleGroupsService($sm->get('BitwebEntityGeneratorModule\Service\RoleGroups'));
+				$controller = new DoctrineEntityGeneratorModule\Controller\RoleGroupsController();
+				$controller->setRoleGroupsService($sm->get('DoctrineEntityGeneratorModule\Service\RoleGroups'));
 					
 				return $controller;
 			}
@@ -72,29 +72,29 @@ return array (
 			
 		),
 		'factories' => array (
-			'BitwebEntityGeneratorModule\Service\Entity' => function(ServiceManager $sm) use ($entityGeneratorConfiguration) {
-				$service = new BitwebEntityGeneratorModule\Service\EntityService();
+			'DoctrineEntityGeneratorModule\Service\Entity' => function(ServiceManager $sm) use ($entityGeneratorConfiguration) {
+				$service = new DoctrineEntityGeneratorModule\Service\EntityService();
 				$service->setConfiguration($entityGeneratorConfiguration);
 				
 				return $service;
 			},
-			'BitwebEntityGeneratorModule\Service\Role' => function(ServiceManager $sm) use ($roleManagementConfiguration) {
-				$service = new BitwebEntityGeneratorModule\Service\RoleService();
+			'DoctrineEntityGeneratorModule\Service\Role' => function(ServiceManager $sm) use ($roleManagementConfiguration) {
+				$service = new DoctrineEntityGeneratorModule\Service\RoleService();
 				$service->setConfiguration($roleManagementConfiguration);
 				
 				return $service;
 			},
-			'BitwebEntityGeneratorModule\Service\RoleGroups' => function(ServiceManager $sm) use ($roleManagementConfiguration) {
-				$service = new BitwebEntityGeneratorModule\Service\RoleGroupsService();
+			'DoctrineEntityGeneratorModule\Service\RoleGroups' => function(ServiceManager $sm) use ($roleManagementConfiguration) {
+				$service = new DoctrineEntityGeneratorModule\Service\RoleGroupsService();
 			
 				return $service;
 			},
-			'BitwebEntityGeneratorModule\Service\EntityGenerator' => function(ServiceManager $sm) use ($entityGeneratorConfiguration) {
-				$service = new BitwebEntityGeneratorModule\Service\EntityGeneratorService();
+			'DoctrineEntityGeneratorModule\Service\EntityGenerator' => function(ServiceManager $sm) use ($entityGeneratorConfiguration) {
+				$service = new DoctrineEntityGeneratorModule\Service\EntityGeneratorService();
 			
 				return $service;
 			},
-			'developmentNavigation' => 'BitwebEntityGeneratorModule\Navigation\DevelopmentNavigationFactory'
+			'developmentNavigation' => 'DoctrineEntityGeneratorModule\Navigation\DevelopmentNavigationFactory'
 		)
 	), 
 	'navigation' => array (
