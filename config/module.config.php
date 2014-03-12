@@ -46,7 +46,7 @@ return array (
 			
 		),
 		'factories' => array (
-			'DoctrineEntityGeneratorModule\Service\EntityGenerator' => function(ServiceManager $sm) use ($entityGeneratorConfiguration) {
+			'DoctrineEntityGeneratorModule\Service\EntityGenerator' => function(ServiceManager $sm) {
 				$service = new DoctrineEntityGeneratorModule\Service\EntityGeneratorService();
 			
 				return $service;
