@@ -1,0 +1,17 @@
+{
+    "name": "bitweb/bitweb-entitygenerator-module",
+    "description": "",
+    "type": "library",
+    "require": {
+        "php": ">=5.3.3",
+        "doctrine/doctrine-orm-module": "0.8.*",
+        "zendframework/zendframework": "2.2.*"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "BitwebEntityGeneratorModule\\": "src/",
+            "BitwebEntityGeneratorModuleTest\\": "tests/"
+        }
+    }
+}

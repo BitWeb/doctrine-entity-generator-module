@@ -1,0 +1,6 @@
+<form action="<?php echo $this->url('development/query', array(), array(), true); ?>" method="post">
+Oled kindel, et soovid rolli kustutada?
+	<input type="hidden" name="confirm" value="1">
+	<input class="btn btn-primary" type="submit" value="Jah, kustuta!">
+	<input class="btn btn-danger" type="button" value="Ei" onclick="javascript:parent.$.fancybox.close();">
+</form>

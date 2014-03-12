@@ -1,0 +1,57 @@
+<html>
+<head>
+		<?php 
+			echo $this->headTitle();
+			echo $this->headMeta();
+			echo $this->headLink();
+			echo $this->headScript();
+		?>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<button type="button" class="btn btn-navbar" data-toggle="collapse"
+						data-target=".nav-collapse">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="brand" href="<?php echo $this->url('development', array (
+							'controller' => 'index',
+							'action' => 'index'
+					)); ?>">BitWeb Development</a>
+					<div class="nav-collapse collapse">
+						<?php echo $this->navigation('developmentNavigation')->menu()->setUlClass('nav'); ?>
+					</div>
+					<!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+		<div class="container" style="padding-top:70px;">
+			<?php
+			echo $this->content;
+			?>
+		</div>
+		<script type="text/javascript">
+			$('.fancyboxLink').fancybox({
+				type: 'iframe'
+			});
+
+			function back(anchor) {
+				if (top != self) {
+					parent.$.fancybox.close();
+				} else {
+					var locationSplit = window.location.href.split('/');
+					var controllerIndex = 'http://' + locationSplit[2] + '/' + locationSplit[3] + '/' + locationSplit[4];
+					if (controllerIndex == window.location) {
+						history.back();
+					}
+					if (anchor != undefined) {
+						controllerIndex += '#' + anchor;
+					}
+					window.location = controllerIndex;
+				}
+			}
+		</script>
+	</body>
+</html>

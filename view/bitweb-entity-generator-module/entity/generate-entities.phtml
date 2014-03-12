@@ -1,0 +1,12 @@
+<div style="margin-bottom:20px;">
+	<a href="<?php echo $this->url('default', array('controller' => 'dev-entity', 'action' => 'index')); ?>">Tagasi entities lehele</a>
+</div>
+
+<div>Genereerisin <b><?php echo intval(count($this->outputList)); ?></b> Entity klassi</div>
+<ul>
+	<?php foreach($this->outputList as $listElement): ?>
+		<li><?php echo $listElement['outputDirectory']; ?>/<?php echo $listElement['entityNamespace']; ?>/<?php echo $listElement['entityName']; ?>.php</li> 
+	<?php endforeach; ?>		
+</ul>
+<br>
+<a href="<?php echo $this->url('development', array('controller' => 'entity', 'action' => 'index')); ?>">Tagasi entities lehele</a>

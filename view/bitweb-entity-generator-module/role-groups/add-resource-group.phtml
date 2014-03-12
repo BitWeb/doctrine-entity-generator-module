@@ -1,0 +1,8 @@
+<form action="" method="post">
+	<?php if ($this->alreadyExisting): ?>
+		<div class="text-error">Ressursigrupp identifikaatoringa <b><?php echo $this->groupIdentificator; ?></b> on juba olemas!</div>
+	<?php endif; ?>
+	<label class="control-label">Ressursigrupi identifikaator: <input class="input-block-level" type="text" name="groupIdentificator" value="<?php echo $this->groupIdentificator; ?>"></label>
+	<input class="btn btn-primary" type="submit" value="Lisa">
+	<input class="btn btn-danger" type="button" value="Tagasi" onclick="javascript:back('tabResourceGroups');">
+</form>
