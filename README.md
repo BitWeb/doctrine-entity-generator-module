@@ -1,0 +1,2 @@
+doctrine-entity-generator-module
+================================
