@@ -1,6 +1,6 @@
 {
     "name": "bitweb/doctrine-entity-generator-module",
-    "description": "",
+    "description": "Doctrine entity generator module",
     "type": "library",
     "require": {
         "php": ">=5.3.3",
@@ -10,8 +10,8 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
-            "BitwebEntityGeneratorModule\\": "src/",
-            "BitwebEntityGeneratorModuleTest\\": "tests/"
+           "": ["src/", "test/"]
         }
-    }
+    },
+    "version": "1.0"
 }

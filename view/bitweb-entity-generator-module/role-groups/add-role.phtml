@@ -1,8 +1,0 @@
-<form action="" method="post">
-	<?php if ($this->alreadyExisting): ?>
-		<div class="text-error">Roll identifikaatoringa <b><?php echo $this->roleIdentificator; ?></b> on juba olemas!</div>
-	<?php endif; ?>
-	<label class="control-label">Rolli identifikaator: <input class="input-block-level" type="text" name="roleIdentificator" value="<?php echo $this->roleIdentificator; ?>"></label>
-	<input class="btn btn-primary" type="submit" value="Lisa">
-	<input class="btn btn-danger" type="button" value="Tagasi" onclick="javascript:back('tabRoles');">
-</form>

@@ -1,8 +1,0 @@
-<form action="<?php echo $this->url('development/query', array(), array(), true); ?>" method="post">
-	<h6>Vali lisatav(ad) roll(id)</h6>
-	<?php foreach ($this->roles as $role): ?>
-		<label class=""><input type="checkbox" name="roles[]" value="<?php echo $role; ?>"><?php echo $role; ?></label>
-	<?php endforeach; ?>
-	<input class="btn btn-primary" type="submit" value="Lisa">
-	<input class="btn btn-danger" type="button" value="Tagasi" onclick="javascript:parent.$.fancybox.close();">
-</form>
